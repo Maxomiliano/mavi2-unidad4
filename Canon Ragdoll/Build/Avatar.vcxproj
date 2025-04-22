@@ -22,12 +22,14 @@
     <ClInclude Include="..\Src\Avatar.h" />
     <ClInclude Include="..\Src\Box2DHelper.h" />
     <ClInclude Include="..\Src\Game.h" />
+    <ClInclude Include="..\Src\Ragdoll.h" />
     <ClInclude Include="..\Src\SFMLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Avatar.cpp" />
     <ClCompile Include="..\Src\Box2dEmptyApp.cpp" />
     <ClCompile Include="..\Src\Game.cpp" />
+    <ClCompile Include="..\Src\Ragdoll.cpp" />
     <ClCompile Include="..\Src\SFMLRenderer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -35,7 +37,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Box2dEmptyApp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Ejercicio 5</ProjectName>
+    <ProjectName>Canon de Ragdoll</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

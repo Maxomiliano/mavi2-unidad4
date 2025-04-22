@@ -4,6 +4,7 @@
 #include "SFMLRenderer.h"
 #include <list>
 #include "Avatar.h"
+#include "Ragdoll.h"
 
 using namespace sf;
 class Game
@@ -24,8 +25,7 @@ private:
 	int fps;
 
 	//cuerpo de box2d 
-	b2Body* controlBody;
-	b2Body* centerBody;
+	Ragdoll* ragdoll;
 	Avatar* controlBodyAvatar;
 	Mouse* mouse;
 	
