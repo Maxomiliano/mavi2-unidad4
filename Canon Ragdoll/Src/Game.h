@@ -28,6 +28,7 @@ private:
 	Ragdoll* ragdoll;
 	Avatar* controlBodyAvatar;
 	Mouse* mouse;
+	b2Body* cannonBody;
 	
 	sf::Texture texturaPelota;
 	bool wasMousePressed = false;

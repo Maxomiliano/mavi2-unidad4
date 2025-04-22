@@ -51,8 +51,27 @@ void Game::DoEvents()
 		case Event::Closed:
 			wnd->close(); // Cierra la ventana
 			break;
+			/*
+		case Event::MouseButtonPressed:
+			float angle = cannonBody->GetAngle();
+			b2Vec2 direction(std::cos(angle), std::sin(angle));
+
+			float impulseMagnitude = 1000.0f;
+			b2Vec2 impulse = impulseMagnitude * direction;
+
+			//b2Vec2 cannonPosition = cannonBody->GetPosition();
+			//b2Vec2 spawnPosition = cannonPosition + 9.0f * direction;
+
+			//controlBody->SetTransform(spawnPosition, 0.0f);
+			controlBody->SetTransform(b2Vec2(16, 80), 0);
+			controlBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+			controlBody->ApplyLinearImpulseToCenter(-impulse, true);
+
+			break;
+			*/
 		}
 	}
+
 	ragdoll->GetTorso()->SetAwake(true); // Activa el cuerpo para que responda a fuerzas y colisiones
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 		ragdoll->GetTorso()->ApplyForce(b2Vec2(-1500.0f, 0.0f), ragdoll->GetTorso()->GetWorldCenter(), true);
@@ -105,5 +124,8 @@ void Game::InitPhysics()
 	phyWorld->SetDebugDraw(debugRender);
 
 	CreateWorldBoundaries();
+	cannonBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 25, 5);
+	float angle = b2_pi / 1.5f;
+	cannonBody->SetTransform(b2Vec2(10.0f, 90.0f), angle);
 }
 
