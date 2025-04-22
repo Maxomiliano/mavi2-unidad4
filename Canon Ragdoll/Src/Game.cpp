@@ -38,7 +38,7 @@ void Game::UpdatePhysics()
 }
 
 // Dibuja los elementos del juego en la ventana
-void Game::DrawGame(){}
+void Game::DrawGame() {}
 
 // Procesa los eventos del sistema
 void Game::DoEvents()
@@ -73,7 +73,23 @@ void Game::SetZoom()
 	wnd->setView(camara); // Asigna la vista a la ventana
 }
 
-// Inicializa el mundo físico y los elementos estáticos del juego
+// Crea los elementos estáticos del juego (suelo y paredes)
+void Game::CreateWorldBoundaries()
+{
+	b2Body* groundBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 100, 10);
+	groundBody->SetTransform(b2Vec2(50.0f, 100.0f), 0.0f);
+
+	b2Body* leftWallBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 10, 100);
+	leftWallBody->SetTransform(b2Vec2(0.0f, 50.0f), 0.0f);
+
+	b2Body* rightWallBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 10, 100);
+	rightWallBody->SetTransform(b2Vec2(100.0f, 50.0f), 0.0f);
+
+	b2Body* topWallBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 100, 10);
+	topWallBody->SetTransform(b2Vec2(50.0f, 0.0f), 0.0f);
+}
+
+// Inicializa el mundo físico
 void Game::InitPhysics()
 {
 	float density = 1.0f;
@@ -88,17 +104,6 @@ void Game::InitPhysics()
 	debugRender->SetFlags(UINT_MAX); // Configura el renderizado para que muestre todo
 	phyWorld->SetDebugDraw(debugRender);
 
-	// Crea los elementos estáticos del juego (suelo y paredes)
-	b2Body* groundBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 100, 10);
-	groundBody->SetTransform(b2Vec2(50.0f, 100.0f), 0.0f);
-
-	b2Body* leftWallBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 10, 100);
-	leftWallBody->SetTransform(b2Vec2(0.0f, 50.0f), 0.0f);
-
-	b2Body* rightWallBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 10, 100);
-	rightWallBody->SetTransform(b2Vec2(100.0f, 50.0f), 0.0f);
-
-	b2Body* topWallBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 100, 10);
-	topWallBody->SetTransform(b2Vec2(50.0f, 0.0f), 0.0f);
+	CreateWorldBoundaries();
 }
 

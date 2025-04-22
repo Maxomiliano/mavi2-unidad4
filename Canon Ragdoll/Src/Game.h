@@ -38,6 +38,7 @@ public:
 	Game(int ancho, int alto,std::string titulo);
 	void CreateEnemy(int x, int y);
 	void InitPhysics();
+	void CreateWorldBoundaries();
 
 	//Main game loop
 	void Loop();
