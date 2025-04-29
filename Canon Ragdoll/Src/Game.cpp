@@ -45,6 +45,10 @@ void Game::DrawGame() {}
 // Procesa los eventos del sistema
 void Game::DoEvents()
 {
+	sf::Vector2i mousePixelPos = Mouse::getPosition(*wnd);
+	sf::Vector2f mouseWorldPos = wnd->mapPixelToCoords(mousePixelPos);
+	b2Vec2 mousePos(mouseWorldPos.x, mouseWorldPos.y);
+
 	Event evt;
 	while (wnd->pollEvent(evt))
 	{
@@ -53,26 +57,16 @@ void Game::DoEvents()
 		case Event::Closed:
 			wnd->close(); // Cierra la ventana
 			break;
-			/*
+			
 		case Event::MouseButtonPressed:
-			float angle = cannonBody->GetAngle();
-			b2Vec2 direction(std::cos(angle), std::sin(angle));
-
-			float impulseMagnitude = 1000.0f;
-			b2Vec2 impulse = impulseMagnitude * direction;
-
-			//b2Vec2 cannonPosition = cannonBody->GetPosition();
-			//b2Vec2 spawnPosition = cannonPosition + 9.0f * direction;
-
-			//controlBody->SetTransform(spawnPosition, 0.0f);
-			controlBody->SetTransform(b2Vec2(16, 80), 0);
-			controlBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-			controlBody->ApplyLinearImpulseToCenter(-impulse, true);
-
+			Ragdoll* ragdoll = new Ragdoll(phyWorld, mousePos);
 			break;
-			*/
+			
 		}
 	}
+
+
+	cannon->Rotate(mousePos);
 
 	ragdoll->GetTorso()->SetAwake(true); // Activa el cuerpo para que responda a fuerzas y colisiones
 	if (Keyboard::isKeyPressed(Keyboard::Left))
