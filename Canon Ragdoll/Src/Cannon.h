@@ -8,13 +8,13 @@ using namespace sf;
 class Cannon
 {
 private:
+	b2Body* cannonBody;
 	Vector2f cannonPos;
 	float angle;
 
 public: 
-	Cannon();
-	void PlaceCannon(b2World* world, const b2Vec2& position);
+	Cannon(b2World* world, const b2Vec2& position);
 	void Rotate(b2Vec2 mousePos);
-	b2Body* cannonBody;
+	b2Body* GetCannon() const;
 };
 

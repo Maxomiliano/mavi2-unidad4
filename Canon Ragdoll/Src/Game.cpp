@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Ragdoll.h"
+#include "Cannon.h"
 #include "Box2DHelper.h"
 
 // Constructor de la clase Game
@@ -13,6 +14,7 @@ Game::Game(int ancho, int alto, std::string titulo)
 	frameTime = 1.0f / fps;
 	SetZoom(); // Configuración del zoom de la cámara
 	InitPhysics(); // Inicialización del mundo físico
+	cannon = new Cannon(phyWorld, b2Vec2(10.0f, 90.0f));
 	ragdoll = new Ragdoll(phyWorld, b2Vec2(50.f, 70.f));
 }
 
@@ -114,6 +116,7 @@ void Game::InitPhysics()
 	float density = 1.0f;
 	float friction = 0.5f;
 	float restitution = 0.5f;
+	float cannonAngle = b2_pi / 1.5f;
 
 	// Inicializa el mundo físico con la gravedad por defecto
 	phyWorld = new b2World(b2Vec2(0.0f, 9.8f));
@@ -124,8 +127,5 @@ void Game::InitPhysics()
 	phyWorld->SetDebugDraw(debugRender);
 
 	CreateWorldBoundaries();
-	cannonBody = Box2DHelper::CreateRectangularStaticBody(phyWorld, 25, 5);
-	float angle = b2_pi / 1.5f;
-	cannonBody->SetTransform(b2Vec2(10.0f, 90.0f), angle);
 }
 

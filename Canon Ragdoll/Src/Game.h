@@ -5,6 +5,7 @@
 #include <list>
 #include "Avatar.h"
 #include "Ragdoll.h"
+#include "Cannon.h"
 
 using namespace sf;
 class Game
@@ -26,9 +27,9 @@ private:
 
 	//cuerpo de box2d 
 	Ragdoll* ragdoll;
+	Cannon* cannon;
 	Avatar* controlBodyAvatar;
 	Mouse* mouse;
-	b2Body* cannonBody;
 	
 	sf::Texture texturaPelota;
 	bool wasMousePressed = false;
