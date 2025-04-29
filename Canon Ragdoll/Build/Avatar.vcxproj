@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\Src\Avatar.h" />
     <ClInclude Include="..\Src\Box2DHelper.h" />
+    <ClInclude Include="..\Src\Cannon.h" />
     <ClInclude Include="..\Src\Game.h" />
     <ClInclude Include="..\Src\Ragdoll.h" />
     <ClInclude Include="..\Src\SFMLRenderer.h" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="..\Src\Avatar.cpp" />
     <ClCompile Include="..\Src\Box2dEmptyApp.cpp" />
+    <ClCompile Include="..\Src\Cannon.cpp" />
     <ClCompile Include="..\Src\Game.cpp" />
     <ClCompile Include="..\Src\Ragdoll.cpp" />
     <ClCompile Include="..\Src\SFMLRenderer.cpp" />

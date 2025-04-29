@@ -12,7 +12,8 @@ private:
 	float angle;
 
 public: 
-	Cannon(b2World* world, const b2Vec2& position);
+	Cannon();
+	void PlaceCannon(b2World* world, const b2Vec2& position);
 	void Rotate(b2Vec2 mousePos);
 	b2Body* cannonBody;
 };
