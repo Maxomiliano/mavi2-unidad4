@@ -15,7 +15,7 @@ Game::Game(int ancho, int alto, std::string titulo)
 	SetZoom(); // Configuración del zoom de la cámara
 	InitPhysics(); // Inicialización del mundo físico
 	cannon = new Cannon(phyWorld, b2Vec2(10.0f, 90.0f));
-	ragdoll = new Ragdoll(phyWorld, b2Vec2(50.f, 70.f));
+	//ragdoll = new Ragdoll(phyWorld, b2Vec2(50.f, 70.f));
 }
 
 // Método principal que maneja el bucle del juego
@@ -48,6 +48,7 @@ void Game::DoEvents()
 	sf::Vector2i mousePixelPos = Mouse::getPosition(*wnd);
 	sf::Vector2f mouseWorldPos = wnd->mapPixelToCoords(mousePixelPos);
 	b2Vec2 mousePos(mouseWorldPos.x, mouseWorldPos.y);
+	cannon->Rotate(mousePos);
 
 	Event evt;
 	while (wnd->pollEvent(evt))
@@ -61,13 +62,11 @@ void Game::DoEvents()
 		case Event::MouseButtonPressed:
 			Ragdoll* ragdoll = new Ragdoll(phyWorld, mousePos);
 			break;
-			
 		}
 	}
 
 
-	cannon->Rotate(mousePos);
-
+	/*
 	ragdoll->GetTorso()->SetAwake(true); // Activa el cuerpo para que responda a fuerzas y colisiones
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 		ragdoll->GetTorso()->ApplyForce(b2Vec2(-1500.0f, 0.0f), ragdoll->GetTorso()->GetWorldCenter(), true);
@@ -77,6 +76,7 @@ void Game::DoEvents()
 		ragdoll->GetTorso()->ApplyForce(b2Vec2(0, 500.0f), ragdoll->GetTorso()->GetWorldCenter(), true);
 	if (Keyboard::isKeyPressed(Keyboard::Up))
 		ragdoll->GetTorso()->ApplyForce(b2Vec2(0, -10500.0f), ragdoll->GetTorso()->GetWorldCenter(), true);
+	*/
 }
 
 // Configura el área visible en la ventana de renderizado
