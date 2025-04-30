@@ -4,9 +4,9 @@
 
 Ragdoll::Ragdoll(b2World* world, const b2Vec2& position)
 {
-	float density = 1.0f;
-	float friction = 0.5f;
-	float restitution = 0.2f;
+	float density = 100.0f;
+	float friction = 0.1f;
+	float restitution = 0.1f;
 
 	b2Vec2 torsoOffset(0.0f, 0.0f);
 	b2Vec2 headOffset(0.0f, -5.0f);

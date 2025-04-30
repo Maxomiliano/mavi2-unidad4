@@ -61,14 +61,11 @@ void Game::DoEvents()
 		case Event::MouseButtonPressed:
 			b2Vec2 cannonPos = cannon->GetCannon()->GetPosition();
 			b2Vec2 direction = mousePos - cannonPos;
-
-			float distance = direction.Length();
-			direction *= distance;
-
-			float impulseMagnitude = 10;
+			float impulseMagnitude = 5000;
 			b2Vec2 impulse = impulseMagnitude * direction;
-
-			Ragdoll* ragdoll = new Ragdoll(phyWorld, cannonPos);
+			direction.Normalize();
+			b2Vec2 spawnOffset(direction.x * 12.5f, direction.y * 12.5f);
+			Ragdoll* ragdoll = new Ragdoll(phyWorld, cannonPos + spawnOffset );
 			ragdoll->GetTorso()->ApplyLinearImpulseToCenter(impulse, true);
 
 
