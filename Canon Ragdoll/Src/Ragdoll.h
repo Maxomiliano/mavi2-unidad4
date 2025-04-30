@@ -5,7 +5,7 @@
 class Ragdoll
 {
 public:
-	Ragdoll(b2World* world, const b2Vec2& position);
+	Ragdoll(b2World* world, const b2Vec2& position, float scale);
 
 	b2Body* GetTorso() const;
 
